@@ -28,14 +28,9 @@ public class guisort {
                 //new TimeTracker(new YuliaSort.Bubble(), "Yulia.BubbleSort"),
                 //new TimeTracker(new YuliaSort.Gnome(), "Yulia.GnomeSort"),
                 //new TimeTracker(new YuliaSort.Selection(), "Yulia.SelectionSort"),
-                //new TimeTracker(new ArtemsSorts.Bubble(), "Artem.BubbleSort"),
-                //new TimeTracker(new ArtemsSorts.Counting(), "Artem.CountingSort"),
-                //new TimeTracker(new ArtemsSorts.Selection(), "Artem.SelectionSort"),
-                //new TimeTracker(new ArtemsSorts.Comb(),"Artem.CombSort"),
-                //new TimeTracker(new ArtemsSorts.Insertion(),"Artem.InsertionSort"),
-                //new TimeTracker(new Sort.cocktailsort(), "Lee.cocktailsort"),
+                new TimeTracker(new Sort.cocktailsort(), "Lee.cocktailsort"),
                 new TimeTracker(new Sort.bubblesort(), "Lee.bubblesort"),
-                //new TimeTracker(new Sort.monkeysort(), "Lee.monkeysort"),
+                new TimeTracker(new Sort.monkeysort(), "Lee.monkeysort"),
                 new TimeTracker(new Sort.selectionsort(), "Lee.selectionsort"),
                 new TimeTracker(new Sort.combsort(), "Lee.combsort")
         };

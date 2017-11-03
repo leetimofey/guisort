@@ -66,9 +66,9 @@ public class Run extends TimeTracker{
         ArrayTools.fillrandom(list);
 
         TimeTracker[] algs = new TimeTracker[] {
-                //new TimeTracker(new Sort.cocktailsort(), "Lee.cocktailsort"),
+                new TimeTracker(new Sort.cocktailsort(), "Lee.cocktailsort"),
                 new TimeTracker(new Sort.bubblesort(), "Lee.bubblesort"),
-                //new TimeTracker(new Sort.monkeysort(), "Lee.monkeysort"),
+                new TimeTracker(new Sort.monkeysort(), "Lee.monkeysort"),
                 new TimeTracker(new Sort.selectionsort(), "Lee.heapsort"),
                 new TimeTracker(new Sort.combsort(), "Lee.combsort"),
         };

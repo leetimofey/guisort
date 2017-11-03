@@ -31,40 +31,39 @@ public class Sort {
     }
 
 
-    //public static class monkeysort implements SortingAlg {
+    public static class monkeysort implements SortingAlg {
 
-    //    private static void mix (int[] list) {
-    //        for (int i = 0; i < list.length; i++) {
-    //            ArrayTools.int_swap(list, i, abs(ArrayTools.random_int(list.length - 1)));
-    //        }
-    //    }
+        private static void mix (int[] list) {
+            for (int i = 0; i < list.length; i++) {
+                ArrayTools.int_swap(list, i, abs(ArrayTools.random_int(list.length - 1)));
+            }
+        }
 
-    //    private static boolean sorted(int[] list) {
-    //        for (int i = 1; i < list.length; i++) {
-    //            if (list[i-1] > list[i])
-    //                return false;
-    //        }
-    //        return true;
-    //    }
+        private static boolean sorted(int[] list) {
+            for (int i = 1; i < list.length; i++) {
+                if (list[i-1] > list[i])
+                    return false;
+            }
+            return true;
+        }
 
-    //    @Override
-    //    public int[] sort(int[] list) {
-    //        while (!sorted(list))
-    //            mix(list);
-    //        ArrayTools.print(list);
-    //        return list;
-    //    }
+        @Override
+        public int[] sort(int[] list) {
+            while (!sorted(list))
+                mix(list);
+            ArrayTools.print(list);
+            return list;
+        }
+        @Override
+        public String name(int[] list) {
+            return "Lee.MonkeySort";
+        }
 
-    //}
+    }
 
 
     public static class selectionsort implements SortingAlg {
-        /**
-         * Array sort
-         *
-         * @param list int[] array
-         * @return sorted array
-         */
+
         @Override
         public int[] sort(int[] list) {
             for (int i = 0; i < list.length - 1; i++) {
@@ -84,34 +83,38 @@ public class Sort {
         }
     }
 
-    //public static class cocktailsort implements SortingAlg{
+    public static class cocktailsort implements SortingAlg{
 
-    //    @Override
-    //    public int[] sort(int[] list){
-    //        int left = 0;
-    //        int right = list.length - 1;
+        @Override
+        public int[] sort(int[] list){
+            int left = 0;
+            int right = list.length - 1;
 
-    //        while (left <= right){
-    //            for (int i = left; i < right; i++){
-    //                if (list[i-1] > list[i]){
-    //                    int tmp = list[i];
-    //                    list[i] = list[i-1];
-    //                    list[i-1] = tmp;
-    //                }
-    //            }
-    //            right --;
-     //           for (int i = right; i > left; i--){
-     //               if (list[i] < list[i-1]){
-     //                   int tmp = list[i-1];
-     //                   list[i-1] = list[i];
-     //                   list[i] = tmp;
-     //               }
-     //           }
-     //           left ++;
-    //        }
-    //        return list;
-    //    }
-    //}
+            while (left <= right){
+                for (int i = left; i < right; i++){
+                    if (list[i-1] > list[i]){
+                        int tmp = list[i];
+                        list[i] = list[i-1];
+                        list[i-1] = tmp;
+                    }
+                }
+                right --;
+                for (int i = right; i > left; i--){
+                    if (list[i] < list[i-1]){
+                        int tmp = list[i-1];
+                        list[i-1] = list[i];
+                        list[i] = tmp;
+                    }
+                }
+                left ++;
+            }
+            return list;
+        }
+        @Override
+        public String name(int[] list) {
+            return "Lee.Cocktailsort  ";
+        }
+    }
 
     public static class combsort implements SortingAlg {
 
