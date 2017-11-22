@@ -91,7 +91,7 @@ public class Sort {
             int right = list.length - 1;
 
             while (left <= right){
-                for (int i = left; i < right; i++){
+                for (int i = left+1; i < right; i++){
                     if (list[i-1] > list[i]){
                         int tmp = list[i];
                         list[i] = list[i-1];
