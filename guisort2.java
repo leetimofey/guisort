@@ -20,11 +20,8 @@ public class guisort2 {
     String infoLabelText = "";
     String result = "";
 
-
-    public void maintestspeed(int[] list) {
-        TimeTracker[] algs;
-        algs = new TimeTracker[]{
-                new TimeTracker(new JuliaSort.Comb(), "Yulia.CombSort"),
+    TimeTracker[] algs = new TimeTracker[]{
+        new TimeTracker(new JuliaSort.Comb(), "Yulia.CombSort"),
                 new TimeTracker(new JuliaSort.Insertion(), "Yulia.Insertionsort"),
                 new TimeTracker(new JuliaSort.Bubble(), "Yulia.BubbleSort"),
                 new TimeTracker(new JuliaSort.Gnome(), "Yulia.GnomeSort"),
@@ -40,15 +37,18 @@ public class guisort2 {
                 new TimeTracker(new Sort.selectionsort(), "Lee.selectionsort"),
                 new TimeTracker(new Sort.combsort(), "Lee.combsort"),
                 new TimeTracker(new Sort.monkeysort(), "Lee.monkeysort")
-        };
+    };
 
-        for (TimeTracker alg : algs) {
+    public void maintestspeed(int[] list) {
+
+
+        for(TimeTracker alg : algs) {
             int[] toSort = list.clone();
             System.out.println(alg.name);
             infoLabelText = alg.name;
             alg.sort(toSort);
             result = result + alg.name + ":  " + String.valueOf(alg.result) + "\n";
-            barValue += 100/(algs.length);
+            barValue += 1;
         }
     }
 
@@ -77,12 +77,12 @@ public class guisort2 {
             public void actionPerformed(ActionEvent e) {
                 progressBar1.setValue(0);
                 infoLabel.setText("");
-                progressBar1.setMaximum(100);
+                progressBar1.setMaximum(algs.length);
                 barValue = 0;
                 result = "";
                 Thread one = new Thread(() -> {
                     try {
-                        while (barValue < 100) {
+                        while (barValue < algs.length) {
                             try {
                                 if (Integer.parseInt(mainTextField.getText()) > 0) {
                                     Integer length = Integer.parseInt(mainTextField.getText());
@@ -94,19 +94,19 @@ public class guisort2 {
                                     maintestspeed(list);
                                 } else {
                                     infoLabelText = "Error";
-                                    barValue = 100;
+                                    barValue = algs.length;
                                     result = "Error";
 
                                 }
                             } catch (Exception ex) {
                                 infoLabelText = "Error";
-                                barValue = 100;
+                                barValue = algs.length;
                                 result = "Error";
                             }
                             Thread.sleep(1);
-                            JOptionPane.showMessageDialog(null, result, "Result",
-                                    JOptionPane.INFORMATION_MESSAGE);
                         }
+                        JOptionPane.showMessageDialog(null, result, "Result",
+                                JOptionPane.INFORMATION_MESSAGE);
                     }  catch(InterruptedException v) {
                         System.out.println(v.getMessage());
                     }
@@ -114,7 +114,7 @@ public class guisort2 {
                 one.start();
                 Thread two = new Thread(() -> {
                     try {
-                        while (barValue <= 100) {
+                        while (barValue <= algs.length) {
                             infoLabel.setText(infoLabelText);
                             progressBar1.setValue(barValue);
                             Thread.sleep(1);
